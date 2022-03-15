@@ -24,14 +24,19 @@ public class PersonContact {
 	 */
 	public PersonContact(String firstname, String lastname, String address, String city, String state, int zip,
 			String phoneno, String email) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.address = address;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.phoneno = phoneno;
-		this.email = email;
+		setFirstName(firstname);
+		setLastName(lastname);
+		setAddress(address);
+		setCity(city);
+		setState(state);
+		setZip(zip);
+		setPhoneNumber(phoneno);
+		setGmail(email);
+	}
+
+	private void setZip(int zip2) {
+		// TODO Auto-generated method stub
+
 	}
 
 	/**

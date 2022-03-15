@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
-	Scanner sc = new Scanner(System.in);
+	static Scanner sc = new Scanner(System.in);
 	ArrayList<PersonContact> person;
 
 	/**
@@ -107,31 +107,18 @@ public class AddressBookMain {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System Program");
 		AddressBookMain abm = new AddressBookMain();
-		int size = abm.nextInt();
-		abm.addMultiplePerson();
-		/**
-		 * calling add method
-		 */
-		abm.newcontact();
-
-		/**
-		 * calling edit method
-		 */
-		abm.editPerson();
-
-		/**
-		 * calling delete method
-		 */
-		abm.deletePerson();
+		System.out.println("Enter no of person:");
+		int size = sc.nextInt();
 
 		// looping the methord/construtor to add person data in arraylist
 		for (int i = 1; i <= size; i++) {
-			abm.newcontact();
+			abm.addMultiplePerson();
 		}
 	}
 
-	private int nextInt() {
+	public AddressBookMain get(String existingBook) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
+
 }
