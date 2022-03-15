@@ -60,6 +60,25 @@ public class AddressBookMain {
 		}
 	}
 
+	/**
+	 * deleteperson - modify data by deleting data of the Person
+	 */
+	public void deletePerson() {
+		System.out.println("Enter name to Delete the Data");
+		String input = sc.next();
+
+		for (int i = 0; i < person.size(); i++) {
+			PersonContact pc1 = (PersonContact) person.get(i);
+			if (input.equals(pc1.getFirstName())) {
+				System.out.println(pc1);
+				person.remove(i);
+				System.out.println("Contact Deleted");
+			} else {
+				System.out.println("No matches found for given first name.");
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System Program");
 		AddressBookMain abm = new AddressBookMain();
@@ -72,5 +91,10 @@ public class AddressBookMain {
 		 * calling edit method
 		 */
 		abm.editPerson();
+
+		/**
+		 * calling delete method
+		 */
+		abm.deletePerson();
 	}
 }
