@@ -40,12 +40,37 @@ public class AddressBookMain {
 		System.out.println("The Contact Details of " + firstname + "\n" + pc);
 	}
 
+	/**
+	 * editperson - EDiting data of the Person
+	 */
+	public void editPerson() {
+		System.out.println("Enter name to Modify Data");
+		String editinput = sc.next();
+		for (int i = 0; i < person.size(); i++) {// get contacts for whole array list
+			PersonContact pc1 = (PersonContact) person.get(i);
+			if (editinput.equals(pc1.getFirstName())) {
+				newcontact();/// calling add person to replace
+				for (int j = 0; j < person.size(); j++) {
+					person.set(j, pc1);
+				}
+
+			} else {
+				System.out.println("No matches found for given first name.");
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System Program");
-		AddressBookMain ab = new AddressBookMain();
+		AddressBookMain abm = new AddressBookMain();
 		/**
 		 * calling add method
 		 */
-		ab.newcontact();
+		abm.newcontact();
+
+		/**
+		 * calling edit method
+		 */
+		abm.editPerson();
 	}
 }
