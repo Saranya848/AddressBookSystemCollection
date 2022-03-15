@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class AddressBookMain {
 	static Scanner sc = new Scanner(System.in);
 	ArrayList<PersonContact> person;
+	MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
 
 	/**
 	 * adding new contact in Book
@@ -86,13 +87,13 @@ public class AddressBookMain {
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
-				newcontact();
+				multipleAddressBook.newcontact();
 				break;
 			case 2:
-				editPerson();
+				multipleAddressBook.editPerson();
 				break;
 			case 3:
-				deletePerson();
+				multipleAddressBook.editPerson();
 				break;
 			case 4:
 				System.out.println("You are out of the address book system");
