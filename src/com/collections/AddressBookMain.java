@@ -79,9 +79,36 @@ public class AddressBookMain {
 		}
 	}
 
+	public void addMultiplePerson() {
+		while (true) {
+			System.out.println("Enter the option \n1)To Add Contect" + "\n2)To Edit Contact" + "\n3)To Delete Contact"
+					+ "\n4)exit");
+			int option = sc.nextInt();
+			switch (option) {
+			case 1:
+				newcontact();
+				break;
+			case 2:
+				editPerson();
+				break;
+			case 3:
+				deletePerson();
+				break;
+			case 4:
+				System.out.println("You are out of the address book system");
+				break;
+
+			default:
+				System.out.println("invalid option");
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System Program");
 		AddressBookMain abm = new AddressBookMain();
+		int size = abm.nextInt();
+		abm.addMultiplePerson();
 		/**
 		 * calling add method
 		 */
@@ -96,5 +123,15 @@ public class AddressBookMain {
 		 * calling delete method
 		 */
 		abm.deletePerson();
+
+		// looping the methord/construtor to add person data in arraylist
+		for (int i = 1; i <= size; i++) {
+			abm.newcontact();
+		}
+	}
+
+	private int nextInt() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
