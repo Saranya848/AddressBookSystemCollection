@@ -10,7 +10,7 @@ public class MultipleAddressBook {
 	 * Hash map created for Multiple Address Books with Name and
 	 * AddressBookSystemMain object
 	 */
-	Map<String, AddressBookMain> addressBook = new HashMap<>();
+	Map<String, AddressBookMain> addressbook = new HashMap<>();
 	/**
 	 * Scanner function for user input
 	 */
@@ -25,11 +25,11 @@ public class MultipleAddressBook {
 
 		System.out.println("Enter name of the address book");
 		String bookName = scanner.next();
-		if (addressBook.containsKey(bookName)) {
+		if (addressbook.containsKey(bookName)) {
 			System.out.println("Book Already Exists");
 		} else {
 			AddressBookMain obj = new AddressBookMain();
-			addressBook.put(bookName, obj);
+			addressbook.put(bookName, obj);
 			System.out.println("New Address Book Created with name: " + bookName);
 		}
 
@@ -42,11 +42,11 @@ public class MultipleAddressBook {
 	public void addingContacts() {
 		System.out.println("Enter name of address book you want to add contact in");
 		String existingBook = scanner.next();
-		AddressBookMain addressBook = addressBook.get(existingBook);
+		AddressBookMain addressBook = addressbook.get(existingBook);
 		if (addressBook == null) {
 			System.out.println("No adress book exists with given name");
 		} else {
-			addressBook.get(existingBook).addContact();
+			addressBook.get(existingBook).newcontact();
 		}
 	}
 
@@ -57,7 +57,7 @@ public class MultipleAddressBook {
 	public void editingContacts() {
 		System.out.println("Enter name of address book you want to edit contact in");
 		String existingBook = scanner.next();
-		AddressBookMain addressBook = addressBook.get(existingBook);
+		AddressBookMain addressBook = addressbook.get(existingBook);
 		if (addressBook == null) {
 			System.out.println("No adress book exists with given name");
 		} else {
@@ -72,7 +72,7 @@ public class MultipleAddressBook {
 	public void deletingContacts() {
 		System.out.println("Enter name of address book you want to delete contact in");
 		String existingBook = scanner.next();
-		AddressBookMain addressBook = addressBook.get(existingBook);
+		AddressBookMain addressBook = addressbook.get(existingBook);
 		if (addressBook == null) {
 			System.out.println("No adress book exists with given name");
 		} else {
@@ -85,9 +85,19 @@ public class MultipleAddressBook {
 	 * by i). print i get object existing with i and print result
 	 */
 	public void printAddressBook() {
-		for (String i : addressBook.keySet()) {
+		for (String i : addressbook.keySet()) {
 			System.out.println(i);
-			System.out.println(addressBook.get(i).person);
+			System.out.println(addressbook.get(i).person);
 		}
+	}
+
+	public void newcontact() {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void editPerson() {
+		// TODO Auto-generated method stub
+
 	}
 }
