@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
+	public AddressBookMain() {
+		this.person = person;
+	}
+
 	static Scanner sc = new Scanner(System.in);
-	ArrayList<PersonContact> person;
+	static ArrayList<PersonContact> person;
 	MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
 
 	/**
@@ -15,7 +19,7 @@ public class AddressBookMain {
 
 		System.out.println("Enter First Name: ");
 		String firstname = sc.nextLine();
-
+		sc.nextLine();
 		System.out.println("Enter last Name: ");
 		String lastname = sc.nextLine();
 
@@ -78,12 +82,12 @@ public class AddressBookMain {
 	 */
 	public void deletePerson() {
 		System.out.println("Enter name to Delete the Data");
-		String input = sc.next();
+		String s = sc.next();
 
 		for (int i = 0; i < person.size(); i++) {
-			PersonContact pc1 = (PersonContact) person.get(i);
-			if (input.equals(pc1.getFirstName())) {
-				System.out.println(pc1);
+			PersonContact p = (PersonContact) person.get(i);
+			if (s.equals(p.getFirstName())) {
+				System.out.println(p);
 				person.remove(i);
 				System.out.println("Contact Deleted");
 			} else {
@@ -94,25 +98,34 @@ public class AddressBookMain {
 
 	public void addMultiplePerson() {
 		while (true) {
-			System.out.println("Enter the option \n1)To Add Contect" + "\n2)To Edit Contact" + "\n3)To Delete Contact"
-					+ "\n4)exit");
+			System.out.println("Enter the option \n" + "1)To Add New Address Book\n" + "2)To Add New Contact\n"
+					+ "3)To Edit Contact" + "\n4)To Delete Contact" + "\n5)To Print Address Books\n6)Exit");
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
-				multipleAddressBook.newcontact();
+				multipleAddressBook.addressBookAddition();
 				break;
 			case 2:
-				multipleAddressBook.editPerson();
+				multipleAddressBook.addingContacts();
 				break;
 			case 3:
-				multipleAddressBook.editPerson();
+				multipleAddressBook.editingContacts();
 				break;
 			case 4:
-				System.out.println("You are out of the address book system");
+				multipleAddressBook.deletingContacts();
 				break;
+			case 5:
+				multipleAddressBook.printAddressBook();
+				break;
+			case 6: {
+				System.out.println("You are out of the address book system");
+			}
 
+				break;
 			default:
 				System.out.println("invalid option");
+
+				break;
 			}
 		}
 	}
@@ -121,15 +134,15 @@ public class AddressBookMain {
 		System.out.println("Welcome to Address Book System Program");
 		AddressBookMain abm = new AddressBookMain();
 		System.out.println("Enter no of person:");
-		int size = sc.nextInt();
+		// int size = sc.nextInt();
 
 		// looping the methord/construtor to add person data in arraylist
-		for (int i = 1; i <= size; i++) {
-			abm.addMultiplePerson();
-		}
+		// for (int i = 1; i <= size; i++) {
+		abm.addMultiplePerson();
+		// }
 	}
 
-	public AddressBookMain get(String existingBook) {
+	public MultipleAddressBook get(String existingBook) {
 		// TODO Auto-generated method stub
 		return null;
 	}
