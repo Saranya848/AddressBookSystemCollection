@@ -1,12 +1,32 @@
 package com.collections;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class AddressBookMain {
+	public AddressBookMain() {
+		this.setPerson(person);
+	}
+
 	static Scanner sc = new Scanner(System.in);
-	ArrayList<PersonContact> person;
+	private static ArrayList<PersonContact> person;
+	List<PersonContact> contactDetailsList = new ArrayList<>();
 	MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
+
+	public MultipleAddressBook get(String existingBook) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static ArrayList<PersonContact> getPerson() {
+		return person;
+	}
+
+	public void setPerson(ArrayList<PersonContact> person) {
+		AddressBookMain.person = person;
+	}
 
 	/**
 	 * adding new contact in Book
@@ -15,7 +35,7 @@ public class AddressBookMain {
 
 		System.out.println("Enter First Name: ");
 		String firstname = sc.nextLine();
-
+		sc.nextLine();
 		System.out.println("Enter last Name: ");
 		String lastname = sc.nextLine();
 
@@ -44,7 +64,7 @@ public class AddressBookMain {
 	public void duplicateCheck() {
 		System.out.print(" Please enter the first name: ");
 		String name = sc.next();
-		for (PersonContact i : person) {
+		for (PersonContact i : getPerson()) {
 			if (i.getFirstName().equals(name)) {
 				System.out.println(" Given name already exists");
 			}
@@ -59,12 +79,12 @@ public class AddressBookMain {
 	public void editPerson() {
 		System.out.println("Enter name to Modify Data");
 		String editinput = sc.next();
-		for (int i = 0; i < person.size(); i++) {// get contacts for whole array list
-			PersonContact pc1 = (PersonContact) person.get(i);
+		for (int i = 0; i < getPerson().size(); i++) {// get contacts for whole array list
+			PersonContact pc1 = (PersonContact) getPerson().get(i);
 			if (editinput.equals(pc1.getFirstName())) {
 				newcontact();/// calling add person to replace
-				for (int j = 0; j < person.size(); j++) {
-					person.set(j, pc1);
+				for (int j = 0; j < getPerson().size(); j++) {
+					getPerson().set(j, pc1);
 				}
 
 			} else {
@@ -78,13 +98,13 @@ public class AddressBookMain {
 	 */
 	public void deletePerson() {
 		System.out.println("Enter name to Delete the Data");
-		String input = sc.next();
+		String s = sc.next();
 
-		for (int i = 0; i < person.size(); i++) {
-			PersonContact pc1 = (PersonContact) person.get(i);
-			if (input.equals(pc1.getFirstName())) {
-				System.out.println(pc1);
-				person.remove(i);
+		for (int i = 0; i < getPerson().size(); i++) {
+			PersonContact p = (PersonContact) getPerson().get(i);
+			if (s.equals(p.getFirstName())) {
+				System.out.println(p);
+				getPerson().remove(i);
 				System.out.println("Contact Deleted");
 			} else {
 				System.out.println("No matches found for given first name.");
@@ -92,27 +112,70 @@ public class AddressBookMain {
 		}
 	}
 
+	/**
+	 * create method searchByCity that is Ability to search Person across the
+	 * multiple AddressBook by City
+	 * 
+	 * @param name -passing City name
+	 */
+	public void searchByCity(String city) {
+		List<PersonContact> collect = contactDetailsList.stream().filter(p -> p.getCity().equalsIgnoreCase(city))
+				.collect(Collectors.toList());
+		for (PersonContact contact : collect) {
+			System.out.println("Search result: " + contact);
+		}
+	}
+
+	/**
+	 * create method searchByState that is Ability to search Person across the
+	 * multiple AddressBook by State
+	 * 
+	 * @param name -passing State name
+	 */
+	public void searchByState(String state) {
+		List<PersonContact> collect = contactDetailsList.stream().filter(p -> p.getCity().equalsIgnoreCase(state))
+				.collect(Collectors.toList());
+		for (PersonContact contact : collect) {
+			System.out.println("Search result: " + contact);
+		}
+	}
+
 	public void addMultiplePerson() {
 		while (true) {
-			System.out.println("Enter the option \n1)To Add Contect" + "\n2)To Edit Contact" + "\n3)To Delete Contact"
-					+ "\n4)exit");
+			System.out.println("Enter the option \n" + "1)To Add New Address Book\n" + "2)To Add New Contact\n"
+					+ "3)To Check Duplicate Contact" + "4)To Edit Contact" + "\n5)To Delete Contact"
+					+ "\n6)To searching Contact by State or City" + "\n7)To Print Address Books\n8)Exit");
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
-				multipleAddressBook.newcontact();
+				multipleAddressBook.addressBookAddition();
 				break;
 			case 2:
-				multipleAddressBook.editPerson();
+				multipleAddressBook.addingContacts();
 				break;
 			case 3:
-				multipleAddressBook.editPerson();
+				multipleAddressBook.duplicateContacts();
 				break;
 			case 4:
-				System.out.println("You are out of the address book system");
+				multipleAddressBook.editingContacts();
 				break;
+			case 5:
+				multipleAddressBook.deletingContacts();
+				break;
+			case 6:
+				multipleAddressBook.searchcrs();
+			case 7:
+				multipleAddressBook.printAddressBook();
+				break;
+			case 8: {
+				System.out.println("You are out of the address book system");
+			}
 
+				break;
 			default:
 				System.out.println("invalid option");
+
+				break;
 			}
 		}
 	}
@@ -121,17 +184,12 @@ public class AddressBookMain {
 		System.out.println("Welcome to Address Book System Program");
 		AddressBookMain abm = new AddressBookMain();
 		System.out.println("Enter no of person:");
-		int size = sc.nextInt();
+		// int size = sc.nextInt();
 
 		// looping the methord/construtor to add person data in arraylist
-		for (int i = 1; i <= size; i++) {
-			abm.addMultiplePerson();
-		}
-	}
-
-	public AddressBookMain get(String existingBook) {
-		// TODO Auto-generated method stub
-		return null;
+		// for (int i = 1; i <= size; i++) {
+		abm.addMultiplePerson();
+		// }
 	}
 
 }
