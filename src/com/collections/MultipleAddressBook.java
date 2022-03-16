@@ -54,6 +54,26 @@ public class MultipleAddressBook {
 	 * Method to edit contact in specific Address Book Took user input to search
 	 * through HashMap If found: calling editPerson Method
 	 */
+	public void duplicateContacts() {
+		System.out.println("Enter name of address book you want to edit contact in");
+		String existingBook = scanner.next();
+		AddressBookMain addressBook = addressbook.get(existingBook);
+		if (addressBook == null) {
+			System.out.println("No adress book exists with given name");
+		} else {
+			addressBook.get(existingBook).duplicateCheck();
+		}
+	}
+
+	private void duplicateCheck() {
+		// TODO Auto-generated method stub
+
+	}
+
+	/**
+	 * Method to edit contact in specific Address Book Took user input to search
+	 * through HashMap If found: calling editPerson Method
+	 */
 	public void editingContacts() {
 		System.out.println("Enter name of address book you want to edit contact in");
 		String existingBook = scanner.next();
@@ -78,6 +98,11 @@ public class MultipleAddressBook {
 		} else {
 			addressBook.get(existingBook).deletePerson();
 		}
+	}
+
+	private void deletePerson() {
+		// TODO Auto-generated method stub
+
 	}
 
 	/**
