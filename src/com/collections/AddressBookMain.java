@@ -99,7 +99,8 @@ public class AddressBookMain {
 	public void addMultiplePerson() {
 		while (true) {
 			System.out.println("Enter the option \n" + "1)To Add New Address Book\n" + "2)To Add New Contact\n"
-					+ "3)To Edit Contact" + "\n4)To Delete Contact" + "\n5)To Print Address Books\n6)Exit");
+					+ "3)To Check Duplicate Contact" + "4)To Edit Contact" + "\n4)To Delete Contact"
+					+ "\n5)To Print Address Books\n6)Exit");
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
@@ -109,15 +110,18 @@ public class AddressBookMain {
 				multipleAddressBook.addingContacts();
 				break;
 			case 3:
-				multipleAddressBook.editingContacts();
+				multipleAddressBook.duplicateContacts();
 				break;
 			case 4:
-				multipleAddressBook.deletingContacts();
+				multipleAddressBook.editingContacts();
 				break;
 			case 5:
+				multipleAddressBook.deletingContacts();
+				break;
+			case 6:
 				multipleAddressBook.printAddressBook();
 				break;
-			case 6: {
+			case 7: {
 				System.out.println("You are out of the address book system");
 			}
 
