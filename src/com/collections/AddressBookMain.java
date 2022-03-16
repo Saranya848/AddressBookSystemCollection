@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddressBookMain {
-	Scanner sc = new Scanner(System.in);
+	static Scanner sc = new Scanner(System.in);
 	ArrayList<PersonContact> person;
+	MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
 
 	/**
 	 * adding new contact in Book
@@ -14,7 +15,7 @@ public class AddressBookMain {
 
 		System.out.println("Enter First Name: ");
 		String firstname = sc.nextLine();
-
+		sc.nextLine();
 		System.out.println("Enter last Name: ");
 		String lastname = sc.nextLine();
 
@@ -38,6 +39,18 @@ public class AddressBookMain {
 		PersonContact pc = new PersonContact(firstname, lastname, address, city, state, zip, phoneno, email);
 
 		System.out.println("The Contact Details of " + firstname + "\n" + pc);
+	}
+
+	public void duplicateCheck() {
+		System.out.print(" Please enter the first name: ");
+		String name = sc.next();
+		for (PersonContact i : person) {
+			if (i.getFirstName().equals(name)) {
+				System.out.println(" Given name already exists");
+			}
+			return;
+		}
+		newcontact();
 	}
 
 	/**
@@ -65,12 +78,12 @@ public class AddressBookMain {
 	 */
 	public void deletePerson() {
 		System.out.println("Enter name to Delete the Data");
-		String input = sc.next();
+		String s = sc.next();
 
 		for (int i = 0; i < person.size(); i++) {
-			PersonContact pc1 = (PersonContact) person.get(i);
-			if (input.equals(pc1.getFirstName())) {
-				System.out.println(pc1);
+			PersonContact p = (PersonContact) person.get(i);
+			if (s.equals(p.getFirstName())) {
+				System.out.println(p);
 				person.remove(i);
 				System.out.println("Contact Deleted");
 			} else {
@@ -81,8 +94,8 @@ public class AddressBookMain {
 
 	public void addMultiplePerson() {
 		while (true) {
-			System.out.println("Enter the option \n1)To Add Contect" + "\n2)To Edit Contact" + "\n3)To Delete Contact"
-					+ "\n4)exit");
+			System.out.println(
+					"Enter the option \n1)To Add Contect\n2)To Edit Contact" + "\n3)To Delete Contact\n4)exit");
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
@@ -94,12 +107,15 @@ public class AddressBookMain {
 			case 3:
 				deletePerson();
 				break;
-			case 4:
+			case 4: {
 				System.out.println("You are out of the address book system");
-				break;
+			}
 
+				break;
 			default:
 				System.out.println("invalid option");
+
+				break;
 			}
 		}
 	}
@@ -107,31 +123,18 @@ public class AddressBookMain {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book System Program");
 		AddressBookMain abm = new AddressBookMain();
-		int size = abm.nextInt();
-		abm.addMultiplePerson();
-		/**
-		 * calling add method
-		 */
-		abm.newcontact();
-
-		/**
-		 * calling edit method
-		 */
-		abm.editPerson();
-
-		/**
-		 * calling delete method
-		 */
-		abm.deletePerson();
+		System.out.println("Enter no of person:");
+		int size = sc.nextInt();
 
 		// looping the methord/construtor to add person data in arraylist
 		for (int i = 1; i <= size; i++) {
-			abm.newcontact();
+			abm.addMultiplePerson();
 		}
 	}
 
-	private int nextInt() {
+	public AddressBookMain get(String existingBook) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
+
 }
