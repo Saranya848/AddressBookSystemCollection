@@ -41,17 +41,6 @@ public class AddressBookMain {
 		System.out.println("The Contact Details of " + firstname + "\n" + pc);
 	}
 
-	public void duplicateCheck() {
-		System.out.print(" Please enter the first name: ");
-		String name = sc.next();
-		for (PersonContact i : person) {
-			if (i.getFirstName().equals(name)) {
-				System.out.println(" Given name already exists");
-			}
-			return;
-		}
-		newcontact();
-	}
 
 	/**
 	 * editperson - EDiting data of the Person
