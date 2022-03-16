@@ -80,6 +80,11 @@ public class MultipleAddressBook {
 		}
 	}
 
+	private void deletePerson() {
+		// TODO Auto-generated method stub
+
+	}
+
 	/**
 	 * Method to print AddressBooks for every element of addressBookSystem(defined
 	 * by i). print i get object existing with i and print result
