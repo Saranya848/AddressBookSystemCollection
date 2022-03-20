@@ -1,10 +1,12 @@
 package com.collections;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class MultipleAddressBook {
 
@@ -199,22 +201,13 @@ public class MultipleAddressBook {
 	}
 
 	/**
-	 * Method to print AddressBooks for every element of addressBookSystem(defined
-	 * by i). print i get object existing with i and print result
+	 * Declaring Sort Method Sorting The Details Of Contact By Using Names Using
+	 * Stream method
 	 */
-	public void countPeopleByRegion(String city,String state) {
-		int count=0;
-		Map<String, AddressBookMain> persons;
-		for(int i=0;i<person.size();i++)
-		{
-			PersonContact person = (PersonContact)person.get(i);
-			if(city.equals(person.getCity()) || state.equals(person.getState())) {
-				count++;
-				System.out.println(person);
-			}
-		}
-		System.out.println("No of contact persons is  :"+count);
+	public void sortByName() {
+		Collection<PersonContact> collection = (Collection<PersonContact>) person;
+		List<PersonContact> list = collection.stream().collect(Collectors.toList());
+		list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
+				.forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
 	}
-
-
 }
