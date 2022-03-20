@@ -1,6 +1,7 @@
 package com.collections;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -140,6 +141,17 @@ public class AddressBookMain {
 		}
 	}
 
+	public void displayPeopleByRegion(HashMap<String, ArrayList<PersonContact>> addressBookMap) {
+		List<PersonContact> contacts;
+		for (String name : addressBookMap.keySet()) {
+			System.out.println("People residing in: " + name);
+			contacts = addressBookMap.get(name);
+			for (PersonContact contact : contacts) {
+				System.out.println(contact);
+			}
+		}
+	}
+
 	public void addMultiplePerson() {
 		while (true) {
 			System.out.println("Enter the option \n" + "1)To Add New Address Book\n" + "2)To Add New Contact\n"
@@ -165,7 +177,7 @@ public class AddressBookMain {
 			case 6:
 				multipleAddressBook.searchcrs();
 			case 7:
-				multipleAddressBook.printAddressBook();
+				multipleAddressBook.displayPeopleByRegion();
 				break;
 			case 8: {
 				System.out.println("You are out of the address book system");

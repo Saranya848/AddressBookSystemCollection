@@ -109,18 +109,6 @@ public class MultipleAddressBook {
 	}
 
 	/**
-	 * Method to print AddressBooks for every element of addressBookSystem(defined
-	 * by i). print i get object existing with i and print result
-	 */
-	public void printAddressBook() {
-		for (String i : addressbook.keySet()) {
-			System.out.println(i);
-			addressbook.get(i);
-			System.out.println(AddressBookMain.getPerson());
-		}
-	}
-
-	/**
 	 * Method to searching the person by the city 1. We are using a advanced for
 	 * loop to get all the keys 2. Then we are saving contacts to the list. 3. Then
 	 * we are using the streams filter to get the contact matching the city and then
@@ -190,4 +178,31 @@ public class MultipleAddressBook {
 		// TODO Auto-generated method stub
 
 	}
+
+	/**
+	 * Method to searching the person by the city 1. We are using a advanced for
+	 * loop to get all the keys 2. Then we are saving contacts to the list. 3. Then
+	 * we are using the streams filter to get the contact matching the city and then
+	 * printing it.
+	 */
+	public void displayPeopleByRegion() {
+
+		System.out.println("Enter the name of the persons : ");
+		String firstname = scanner.next();
+		for (String i : addressbook.keySet()) {
+			addressbook.get(i);
+			List<PersonContact> arr = AddressBookMain.getPerson();
+			arr.stream().filter(person -> person.getCity().equals(firstname))
+					.forEach(person -> System.out.println(person.getFirstName()));
+		}
+	}
+
+	/**
+	 * Method to print AddressBooks for every element of addressBookSystem(defined
+	 * by i). print i get object existing with i and print result
+	 */
+	public void printAddressBook() {
+
+	}
+
 }
