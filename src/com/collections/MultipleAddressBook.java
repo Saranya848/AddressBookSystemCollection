@@ -1,10 +1,10 @@
 package com.collections;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.HashMap;
 
 public class MultipleAddressBook {
 
@@ -18,6 +18,7 @@ public class MultipleAddressBook {
 	 * Scanner function for user input
 	 */
 	Scanner scanner = new Scanner(System.in);
+	private Map<String, AddressBookMain> person;
 
 	/**
 	 * Method to create new address book First took user input to search through
@@ -201,8 +202,19 @@ public class MultipleAddressBook {
 	 * Method to print AddressBooks for every element of addressBookSystem(defined
 	 * by i). print i get object existing with i and print result
 	 */
-	public void printAddressBook() {
-
+	public void countPeopleByRegion(String city,String state) {
+		int count=0;
+		Map<String, AddressBookMain> persons;
+		for(int i=0;i<person.size();i++)
+		{
+			PersonContact person = (PersonContact)person.get(i);
+			if(city.equals(person.getCity()) || state.equals(person.getState())) {
+				count++;
+				System.out.println(person);
+			}
+		}
+		System.out.println("No of contact persons is  :"+count);
 	}
+
 
 }

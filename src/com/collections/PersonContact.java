@@ -108,10 +108,16 @@ public class PersonContact {
 		this.email = email;
 	}
 
+	public PersonContact get(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	@Override
 	public String toString() {
 		return " FirstName :" + firstname + " LastName :" + lastname + " Address : " + address + " City : " + city
 				+ " State : " + state + " Zip :" + zip + '\'' + " PhoneNumber : " + phoneno + " Email : " + email;
 
 	}
+
 }

@@ -143,15 +143,17 @@ public class AddressBookMain {
 
 	public void displayPeopleByRegion(HashMap<String, ArrayList<PersonContact>> addressBookMap) {
 		List<PersonContact> contacts;
-		for (String name : addressBookMap.keySet()) {
-			System.out.println("People residing in: " + name);
-			contacts = addressBookMap.get(name);
+		for (String city : addressBookMap.keySet()) {
+			System.out.println("People residing in: " + city);
+			contacts = addressBookMap.get(city);
 			for (PersonContact contact : contacts) {
 				System.out.println(contact);
 			}
 		}
 	}
-
+	public void countOfCityState(){
+		
+	}
 	public void addMultiplePerson() {
 		while (true) {
 			System.out.println("Enter the option \n" + "1)To Add New Address Book\n" + "2)To Add New Contact\n"
@@ -179,7 +181,15 @@ public class AddressBookMain {
 			case 7:
 				multipleAddressBook.displayPeopleByRegion();
 				break;
-			case 8: {
+			case 8:
+				System.out.println("Enter \n1.Display By City\n2.Display By State");
+				int countChoice = sc.nextInt();
+				if(countChoice==1)
+					multipleAddressBook.countPeopleByRegion(multipleAddressBook.searchByCity());
+				else 
+					multipleAddressBook.countPeopleByRegion(multipleAddressBook.searchByState());
+				break;
+			case 9: {
 				System.out.println("You are out of the address book system");
 			}
 
