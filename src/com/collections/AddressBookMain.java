@@ -156,7 +156,8 @@ public class AddressBookMain {
 		while (true) {
 			System.out.println("Enter the option \n" + "1)To Add New Address Book\n" + "2)To Add New Contact\n"
 					+ "3)To Check Duplicate Contact" + "4)To Edit Contact" + "\n5)To Delete Contact"
-					+ "\n6)To searching Contact by State or City" + "\n7)To Print Address Books \nSorting data by Name \n9)Exit");
+					+ "\n6)To searching Contact by State or City"
+					+ "\n7)To Print Address Books \n8)Sorting data by city or State \n9)Sorting data by City or State or zip \n10)Exit");
 			int option = sc.nextInt();
 			switch (option) {
 			case 1:
@@ -182,7 +183,10 @@ public class AddressBookMain {
 			case 8:
 				multipleAddressBook.sortByName();
 				break;
-			case 9: {
+			case 9:
+				multipleAddressBook.sortByData();
+				break;
+			case 10: {
 				System.out.println("You are out of the address book system");
 			}
 

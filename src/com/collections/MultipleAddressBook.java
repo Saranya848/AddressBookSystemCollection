@@ -210,4 +210,16 @@ public class MultipleAddressBook {
 		list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
 				.forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
 	}
+
+	/**
+	 * Declaring Sort Method Sorting The Details Of Contact By Using Names Using
+	 * Stream method
+	 */
+	public void sortByData() {
+		Collection<PersonContact> collection = (Collection<PersonContact>) person;
+		List<PersonContact> list = collection.stream().collect(Collectors.toList());
+		list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
+				.forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName() + " " + contact.getCity() + " " + contact.getState() + " "
+						+ contact.getPincode()));
+	}
 }
