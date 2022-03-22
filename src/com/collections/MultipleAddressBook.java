@@ -1,12 +1,17 @@
 package com.collections;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.stream.Collectors;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.File;
 
 public class MultipleAddressBook {
 
@@ -208,7 +213,7 @@ public class MultipleAddressBook {
 		Collection<PersonContact> collection = (Collection<PersonContact>) person;
 		List<PersonContact> list = collection.stream().collect(Collectors.toList());
 		list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
-				.forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+				.forEach(person -> System.out.println(person.getFirstName() + " " + person.getLastName()));
 	}
 
 	/**
@@ -219,7 +224,40 @@ public class MultipleAddressBook {
 		Collection<PersonContact> collection = (Collection<PersonContact>) person;
 		List<PersonContact> list = collection.stream().collect(Collectors.toList());
 		list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
-				.forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName() + " " + contact.getCity() + " " + contact.getState() + " "
-						+ contact.getPincode()));
+				.forEach(person -> System.out.println(person.getFirstName() + " " + person.getLastName() + " "
+						+ person.getCity() + " " + person.getState() + " " + person.getPincode()));
+	}
+
+	/**
+	 * reading and writing data by file io
+	 */
+	public void read_write() {
+		StringBuffer empBuffer = new StringBuffer();
+		addressbook.entrySet().forEach(x -> {
+			String nameString = x.getKey() + "\n";
+			empBuffer.append(nameString);
+			x.getValue();
+			AddressBookMain.person.forEach(y -> {
+				String employeeDataString = y.toString().concat("\n");
+				empBuffer.append(employeeDataString);
+			});
+		});
+
+		try {
+			Files.write(Paths.get("addressBook-file.txt"), empBuffer.toString().getBytes());
+
+		} catch (IOException e) {
+
+		}
+	}
+
+	public void data() {
+		try {
+			Files.lines(new File("addressBook-file.txt").toPath()).map(line -> line.trim())
+					.forEach(line -> System.out.println(line));
+
+		} catch (IOException e) {
+
+		}
 	}
 }

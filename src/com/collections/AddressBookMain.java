@@ -12,7 +12,7 @@ public class AddressBookMain {
 	}
 
 	static Scanner sc = new Scanner(System.in);
-	private static ArrayList<PersonContact> person;
+	static ArrayList<PersonContact> person;
 	List<PersonContact> contactDetailsList = new ArrayList<>();
 	MultipleAddressBook multipleAddressBook = new MultipleAddressBook();
 
@@ -186,7 +186,14 @@ public class AddressBookMain {
 			case 9:
 				multipleAddressBook.sortByData();
 				break;
-			case 10: {
+
+			case 10:
+				multipleAddressBook.read_write();
+				break;
+			case 11:
+				multipleAddressBook.data();
+				break;
+			case 12: {
 				System.out.println("You are out of the address book system");
 			}
 
